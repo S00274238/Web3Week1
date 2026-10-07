@@ -6,6 +6,7 @@ export class CarService {
 
 
   async getAllCars(): Promise<ICar[]> {
+    console.log("Fetching all cars from the database...");
     return await CarModel.find().lean(); 
   }
 
@@ -25,4 +26,5 @@ export class CarService {
   async deleteCar(id: string): Promise<ICar | null> {
     return await CarModel.findByIdAndDelete(id).lean();
   }
+
 }

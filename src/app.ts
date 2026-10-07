@@ -3,10 +3,15 @@ import express, {Application, Request, Response} from "express" ;
 import carRoutes from './routes/cars';
 import { env } from "./config/env";
 import { connectDB } from "./config/database";
+import {authenticateKey} from './middleware/auth.middleware';
+import { myLogger } from './middleware/logger.middleware';
 
 const PORT = env.port
 
 const app: Application = express();
+app.use(myLogger);
+
+
 
 const startServer = async () => {
   await connectDB();
@@ -19,6 +24,7 @@ const startServer = async () => {
 startServer();
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
+app.use('/api/v1/cars', authenticateKey, carRoutes);
 
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({
@@ -32,20 +38,12 @@ app.get('/bananas', async (_req : Request, res: Response) => {
     });
 });
 
-app.get('/Borya', async (_req : Request, res: Response) => {
+app.get('/Borya', myLogger, async (_req : Request, res: Response) => {
     res.json({
     message: "Dai deneg bazhezhda",
     });
 });
 
-app.use((req, _res, next) => {  
-    console.log(`${req.method} ${req.originalUrl} papapopope`);
-    next();
-});
 
 
-
-app.listen(PORT, () => {
-    console.log("Server is running on port", PORT);
-    });
 
