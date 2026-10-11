@@ -21,13 +21,15 @@ x-api-key: blahblah
 @newCar = {{postACar.response.body._id}}
 
 ###
-GET http://localhost:3000/api/v1/cars HTTP/1.1
+GET http://localhost:3000/api-docs HTTP/1.1
 content-type: application/json
 x-api-key: blahblah
+
 
 ###
 GET  {{endpoint}} HTTP/3.0
 content-type: application/json
+x-api-key: blahblah
 
 ###
 GET  {{endpoint}}/{{newCar}} HTTP/3.0

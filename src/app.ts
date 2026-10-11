@@ -5,6 +5,8 @@ import { env } from "./config/env";
 import { connectDB } from "./config/database";
 import {authenticateKey} from './middleware/auth.middleware';
 import { myLogger } from './middleware/logger.middleware';
+import { swaggerSpec } from "./config/swagger";
+import swaggerUi from 'swagger-ui-express';
 
 const PORT = env.port
 
@@ -25,6 +27,12 @@ startServer();
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
 app.use('/api/v1/cars', authenticateKey, carRoutes);
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec)
+);
+
 
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({
