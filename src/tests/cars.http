@@ -7,11 +7,13 @@
 # @name postACar
 POST {{endpoint}} HTTP/1.1
 content-type: application/json
+x-api-key: blahblah
 
 
 { "test" : "papapopope",
-  "make" : "Tutu",
-  "model" : "Duuuuu"
+  "make" : "yyyoooo",
+  "model" : "Duuuuu",
+  "year" : 2000
   }
 
 ###

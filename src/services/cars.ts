@@ -18,6 +18,11 @@ export class CarService {
     const car = new CarModel(carData);
     return await car.save();
   }
+  
+  async createUser(userData: ICar): Promise<HydratedDocument<ICar>> {
+    const user = new CarModel(userData);
+    return await user.save();
+  }
 
   async updateCar(id: string, carData: Partial<ICar>): Promise<ICar | null> {
     return await CarModel.findByIdAndUpdate(id, carData, { returnDocument: 'after' }).lean();
