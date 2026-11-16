@@ -5,7 +5,7 @@
 
     "moduleResolution": "NodeNext",
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": "./",
 
     /* Strict Type-Checking */
     "strict": true,
@@ -24,9 +24,9 @@
 
     /* Emit & Types */
     "sourceMap": true,
-    "types": ["node"]
+    "types": ["node", "vitest/globals"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*", "tests"],
   "exclude": ["node_modules", "build"]
 }
 

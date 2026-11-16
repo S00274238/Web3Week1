@@ -14,15 +14,15 @@ export interface ICar {
  *     CreateCarInput:
  *       type: object
  *       required:
- *         - make
- *         - model
+ *         - name
+ *         - genre
  *       properties:
- *         make:
+ *         name:
  *           type: string
- *           example: Renault
- *         model:
+ *           example: WaterInCup
+ *         genre:
  *           type: string
- *           example: Megane
+ *           example: streetArt
  *         year:
  *           type: integer
  *           example: 2010
