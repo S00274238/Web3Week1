@@ -7,6 +7,8 @@ import {authenticateKey} from './middleware/auth.middleware';
 import { myLogger } from './middleware/logger.middleware';
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
+import { errorHandler } from "./middleware/errorHandler.middleware";
+
 
 // const PORT = env.port
 
@@ -35,6 +37,7 @@ app.use(
 
 
 
+
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({
     message: "borya dai deneg"
@@ -52,6 +55,19 @@ app.get('/Borya', myLogger, async (_req : Request, res: Response) => {
     message: "Dai deneg bazhezhda",
     });
 });
+
+app.get("/pong", (_req : Request, res: Response) => {
+    console.log("Received request to /pong");
+    throw new Error("Simulated error in /pong route");
+});
+
+app.get("/pung", async (_req : Request, res: Response) => {
+    console.log("Received request to /pung");
+     throw new Error("Simulated error in /pung route");
+});
+
+app.use(errorHandler);
+
 
 
 export {app};

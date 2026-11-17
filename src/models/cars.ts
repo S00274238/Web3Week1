@@ -7,39 +7,24 @@ export interface ICar {
   year: number;
 }
 
-/**
- * @openapi
- * components:
- *   schemas:
- *     CreateCarInput:
- *       type: object
- *       required:
- *         - name
- *         - genre
- *       properties:
- *         name:
- *           type: string
- *           example: WaterInCup
- *         genre:
- *           type: string
- *           example: streetArt
- *         year:
- *           type: integer
- *           example: 2010
- */
-
 
 export const createCarZSchema = z.object({
-  make: z.string().min(1),
-  model: z.string().min(1),
-  year: z.number().min(1950).optional(),
+  body: z.object({
+    make: z.string().min(1),
+    model: z.string().min(1),
+    year: z.number().min(1950).optional(),
+  }),
 });
 
+
 export const updateCarZSchema = z.object({
-  make: z.string().min(1),
-  model: z.string().min(1),
-  year: z.number().min(1950).optional(),
+  body: z.object({
+    make: z.string().min(1),
+    model: z.string().min(1),
+    year: z.number().min(1950).optional(),
+  }),
 });
+
 
 
 
@@ -51,5 +36,14 @@ const carSchema = new Schema<ICar>(
   },
   { timestamps: true }
 );
+
+export const carParamsSchema = z.object({
+  params: z.object({
+    id: z
+      .string()
+      .regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId')
+  })
+});
+
 
 export const CarModel = model<ICar>('Car', carSchema);

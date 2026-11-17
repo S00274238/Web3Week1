@@ -35,7 +35,7 @@ content-type: application/json
 x-api-key: blahblah
 
 ###
-GET  {{endpoint}}/{{newCar}} HTTP/3.0
+GET  {{endpoint}}/6acabf59da8e694b68083e2f HTTP/3.0
 content-type: application/json
 x-api-key: blahblah
 
@@ -43,14 +43,16 @@ x-api-key: blahblah
 
 ###
 
-DELETE  {{endpoint}}/6abe7d26c8d837a986bd0629 HTTP/3.0
+DELETE  {{endpoint}}/6acabf59da8e694b68083e2f HTTP/3.0
 content-type: application/json
 
 ###
 
-PUT  {{endpoint}}/6abe7e11c8d837a986bd062b HTTP/3.0
+PUT  {{endpoint}}/6acabf59da8e694b68083e2f HTTP/3.0
 content-type: application/json
+
 {
-  "make" : "Pisa"
+   "make" : "popa",
+   "model" : 2000
 }
 
